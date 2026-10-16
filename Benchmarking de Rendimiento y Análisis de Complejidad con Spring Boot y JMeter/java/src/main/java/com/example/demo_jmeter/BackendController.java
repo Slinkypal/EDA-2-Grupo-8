@@ -34,7 +34,7 @@ public class BenchmarkController {
         long acumulador = 0;
 
         // Bucle único lineal O( n )
-        for (int i = 0; i < (n * n); i++) {
+        for (long i = 0; i < (n * n); i++) {
             acumulador += i % 3;
 
         }
