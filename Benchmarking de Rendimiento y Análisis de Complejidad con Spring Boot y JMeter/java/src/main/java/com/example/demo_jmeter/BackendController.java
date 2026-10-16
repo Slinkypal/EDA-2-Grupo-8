@@ -5,38 +5,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.TreeSet;
-
 @RestController
-@RequestMapping("/api/demo")
-public class DemoController {
-
+@RequestMapping("/api/benchmark")
+public class BenchmarkController {
+// ALGORITMO INEFICIENTE: Dos bucles anidados - Complejidad O(n^2)
     @GetMapping("/ineficiente")
-    public String codigoIneficiente(@RequestParam(defaultValue = "3000") int n) {
+    public String codigoIneficiente(@RequestParam(defaultValue = "5000") int n) {
         long inicio = System.currentTimeMillis();
-        
-        ArrayList<Integer> lista = new ArrayList<>();
-        for (int i = n; i > 0; i--) {
-            lista.add(i);
-            Collections.sort(lista); 
-        }
-        
-        long fin = System.currentTimeMillis();
-        return "Ineficiente completado para n=" + n + " en " + (fin - inicio) + " ms.";
-    }
+        long acumulador = 0;
+	for (int i = 0; i < n; i++) {
 
-    @GetMapping("/optimizado")
-    public String codigoOptimizado(@RequestParam(defaultValue = "3000") int n) {
-        long inicio = System.currentTimeMillis();
-        
-        TreeSet<Integer> setOrdenado = new TreeSet<>();
-        for (int i = n; i > 0; i--) {
-            setOrdenado.add(i); 
+            for (int j = 0; j < n; j++) {
+
+                acumulador += (i + j) % 3;
+
+            }
+
         }
         
         long fin = System.currentTimeMillis();
-        return "Optimizado completado para n=" + n + " en " + (fin - inicio) + " ms.";
+        return "Ineficiente O(n^2) completado para n=" + n + " en (fin - inicio) " + (fin - inicio) + " ms.Resultado: " + acumulador;
+    }
+    // ALGORITMO OPTIMIZADO: Un solo bucle lineal - Complejidad O( n )
+    @GetMapping("/optimizado")
+    public String codigoOptimizado(@RequestParam(defaultValue = "5000") int n) {
+        long inicio = System.currentTimeMillis();
+        
+        long acumulador = 0;
+
+        // Bucle único lineal O( n )
+        for (int i = 0; i < (n * n); i++) {
+            acumulador += i % 3;
+
+        }
+        
+        long fin = System.currentTimeMillis();
+        return "Optimizado O(n) completado para n=" + n + " completado en: (fin - inicio) = " + (fin - inicio) + " ms.Resultado: " + acumulador;
     }
 }
