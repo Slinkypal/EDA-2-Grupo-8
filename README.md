@@ -6,4 +6,4 @@ Repositorio de la materia de 2026-B EDA2
 * Matias Monge
 * Alejandro Villacis
 ## Clase 16/10/2026
-[Benchmarking de Rendimiento y Análisis de Complejidad con Spring Boot y JMeter]{Benchmarking de Rendimiento y Análisis de Complejidad con Spring Boot y JMeter}
+[Benchmarking de Rendimiento y Análisis de Complejidad con Spring Boot y JMeter](Benchmarking de Rendimiento y Análisis de Complejidad con Spring Boot y JMeter)
